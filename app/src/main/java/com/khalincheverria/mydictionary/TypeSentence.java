@@ -95,7 +95,7 @@ public class TypeSentence extends AppCompatActivity implements View.OnClickListe
                     Bundle bundle = new Bundle();
                     bundle.putStringArrayList("InvalidWords",list);
                     bundle.putBoolean("Tree",isTree);
-                    bundle.putSerializable("Words",binaryTree);
+                    bundle.putSerializable("Contacts",binaryTree);
                     validateSentence.setArguments(bundle);
                     fragmentTransaction.replace(R.id.validate_sentence,validateSentence);
                     fragmentTransaction.commit();
@@ -111,7 +111,7 @@ public class TypeSentence extends AppCompatActivity implements View.OnClickListe
                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Words.binaryTree=binaryTree;
+                        Contacts.binaryTree=binaryTree;
                         Intent returnStructure= new Intent();
                         returnStructure.putExtra("Tree",true);
 
@@ -140,7 +140,7 @@ public class TypeSentence extends AppCompatActivity implements View.OnClickListe
                 Bundle bundle = new Bundle();
                 bundle.putStringArrayList("InvalidWords",list);
                 bundle.putBoolean("Tree",isTree);
-                bundle.putSerializable("Words",wordList);
+                bundle.putSerializable("Contacts",wordList);
                 validateSentence.setArguments(bundle);
                 fragmentTransaction.replace(R.id.validate_sentence,validateSentence);
 
@@ -157,7 +157,7 @@ public class TypeSentence extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        Words.wordList=wordList;
+                        Contacts.wordList=wordList;
                         Intent returnStructure= new Intent();
                             returnStructure.putExtra("Tree",false);
 
@@ -172,7 +172,7 @@ public class TypeSentence extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onLinkedListPass(LinkedList linkedList){
         TypeSentence.wordList=linkedList;
-        Words.wordList=wordList;
+        Contacts.wordList=wordList;
         Intent returnWord= new Intent();
         returnWord.putExtra("Tree",false);
 
@@ -182,7 +182,7 @@ public class TypeSentence extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onBinaryTreePass(BinaryTree binaryTree){
         TypeSentence.binaryTree= binaryTree;
-        Words.binaryTree=TypeSentence.binaryTree;
+        Contacts.binaryTree=TypeSentence.binaryTree;
         Intent returnWord= new Intent();
         returnWord.putExtra("Tree",true);
 

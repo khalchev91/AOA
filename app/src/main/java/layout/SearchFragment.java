@@ -11,18 +11,14 @@ import android.widget.TextView;
 import com.khalincheverria.mydictionary.Model.Contact;
 import com.khalincheverria.mydictionary.R;
 
-/*
- * A simple {@link Fragment} subclass.
- */
 
 @SuppressWarnings("ConstantConditions")
 public class SearchFragment extends Fragment {
 
 
     public SearchFragment() {
-        // Required empty public constructor
-    }
 
+    }
 
     @SuppressLint({"DefaultLocale", "SetTextI18n"})
     @Override
@@ -42,7 +38,7 @@ public class SearchFragment extends Fragment {
         TextView timeTaken=(TextView)view.findViewById(R.id.time_taken);
         Contact contact;
         if(isTree){
-            contact =(Contact)bundle.getSerializable("Words");
+            contact =(Contact)bundle.getSerializable("Contacts");
             double time=bundle.getDouble("time");
             int count=bundle.getInt("position");
 
@@ -57,7 +53,7 @@ public class SearchFragment extends Fragment {
             position.setText(Integer.toString(count));
 
         }else {
-            contact =(Contact) bundle.getSerializable("Words");
+            contact =(Contact) bundle.getSerializable("Contacts");
             double time=bundle.getDouble("time");
             int count=bundle.getInt("position");
 

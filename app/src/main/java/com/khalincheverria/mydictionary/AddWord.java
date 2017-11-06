@@ -27,7 +27,7 @@ public class AddWord extends AppCompatActivity implements View.OnClickListener, 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_word);
 
-        getSupportActionBar().setTitle("Add a New Contact");
+        getSupportActionBar().setTitle("Add a New Contacts");
 
         String newWord=getIntent().getStringExtra("NewWord");
 

@@ -5,49 +5,47 @@ import java.io.Serializable;
 
     public class Contact implements Serializable {
 
-        private String word;
-        private String definition;
-        private String partOfSpeech;
+        private Name name;
+        private Address address;
 
-        public Contact(String w, String d, String ps){
-            setWord(w);
-            setDefinition(d);
-            setPartOfSpeech(ps);
+        public Contact(Name name,Address address){
+            setName(name);
+            setAddress(address);
         }
 
         public Contact(){
-            this("", "", "");
+            this(new Name(),new Address());
         }
 
         public Contact(Contact contact){
-            this(contact.getWord(), contact.getDefinition(), contact.getPartOfSpeech());
+            this(contact.getName(), contact.getAddress());
         }
 
-        public String getWord() {
-            return word;
+        public Name getName() {
+            return name;
         }
-        public void setWord(String word) {
-            this.word = word;
+
+        public void setName(Name name) {
+            this.name = name;
         }
-        public String getDefinition() {
-            return definition;
+
+        public Address getAddress() {
+            return address;
         }
-        public void setDefinition(String definition) {
-            this.definition = definition;
+
+        public void setAddress(Address address) {
+            this.address = address;
         }
-        public String getPartOfSpeech() {
-            return partOfSpeech;
-        }
-        public void setPartOfSpeech(String partOfSpeech) {
-            this.partOfSpeech = partOfSpeech;
-        }
+
+
+
+
+
 
         public String toString(){
             String out = "";
-
-            out += "Contact:" + getWord() + "\n";
-            out += "Definition:" + getDefinition() + "\n";
-            out += "Part of Speech" + getPartOfSpeech() + "\n";
+            out += "Contacts Name:" + getName() + "\n";
+            out += "Address:" + getAddress() + "\n";
             return out;
         }
 

@@ -71,21 +71,21 @@ protected static LinkedList wordList= new LinkedList();
         recyclerView.setOnScrollListener(fastScroller.getOnScrollListener());
         if(isTree){
 
-                binaryTree= Words.getBinaryTree();
+                binaryTree= Contacts.getBinaryTree();
             BinaryTreeAdapter binaryTreeAdapter=new BinaryTreeAdapter(binaryTree);
             binaryTreeAdapter.notifyDataSetChanged();
             recyclerView.setAdapter(binaryTreeAdapter);
 
 
-                Snackbar.make(coordinatorLayout,"Number of words: "+binaryTree.count(),Snackbar.LENGTH_SHORT).setAction("Words",null).show();
+                Snackbar.make(coordinatorLayout,"Number of words: "+binaryTree.count(),Snackbar.LENGTH_SHORT).setAction("Contacts",null).show();
             }else {
 
-            wordList=Words.getWordList();
+            wordList= Contacts.getWordList();
             WordAdapter wordAdapter = new WordAdapter(wordList);
             wordAdapter.notifyDataSetChanged();
                 recyclerView.setAdapter(wordAdapter);
 
-                Snackbar.make(coordinatorLayout,"Number of words: "+wordList.getSizeOfList(),Snackbar.LENGTH_SHORT).setAction("Words",null).show();
+                Snackbar.make(coordinatorLayout,"Number of words: "+wordList.getSizeOfList(),Snackbar.LENGTH_SHORT).setAction("Contacts",null).show();
             }
 
 

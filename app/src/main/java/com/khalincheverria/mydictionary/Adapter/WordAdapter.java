@@ -48,7 +48,7 @@ private LinkedList wordList;
         @Override
         public void onClick(View v) {
             Intent intent= new Intent(v.getContext(),ViewWord.class);
-            intent.putExtra("Contact", contact);
+            intent.putExtra("Contacts", contact);
             context.startActivity(intent);
 
         }

@@ -27,11 +27,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view){
         if(view.getId()==R.id.binary_tree_button) {
-            Intent intent = new Intent(this, Words.class);
+            Intent intent = new Intent(this, Contacts.class);
             intent.putExtra("BinaryTree", true);
             startActivity(intent);
         }else if(view.getId()==R.id.linked_list_button){
-            Intent intent= new Intent(this,Words.class);
+            Intent intent= new Intent(this,Contacts.class);
             intent.putExtra("BinaryTree",false);
             startActivity(intent);
         }

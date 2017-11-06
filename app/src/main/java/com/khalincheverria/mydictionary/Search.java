@@ -98,7 +98,7 @@ public class Search extends AppCompatActivity implements View.OnClickListener{
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 Bundle bundle= new Bundle();
                 bundle.putBoolean("Tree",true);
-                bundle.putSerializable("Words", contact);
+                bundle.putSerializable("Contacts", contact);
                 bundle.putDouble("time",duration);
                 bundle.putInt("position",count);
                 searchFragment.setArguments(bundle);
@@ -108,7 +108,7 @@ public class Search extends AppCompatActivity implements View.OnClickListener{
 
             }else {
             AlertDialog alertDialog=new AlertDialog.Builder(this).create();
-                alertDialog.setMessage("Contact " + "\""+searchWord +"\""+ " not found in the dictionary");
+                alertDialog.setMessage("Contacts " + "\""+searchWord +"\""+ " not found in the dictionary");
             alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -133,7 +133,7 @@ public class Search extends AppCompatActivity implements View.OnClickListener{
             Bundle bundle= new Bundle();
 
             bundle.putBoolean("Tree",false);
-            bundle.putSerializable("Words", contact);
+            bundle.putSerializable("Contacts", contact);
             bundle.putDouble("time",duration);
             bundle.putInt("position",count);
             searchFragment.setArguments(bundle);
@@ -143,7 +143,7 @@ public class Search extends AppCompatActivity implements View.OnClickListener{
 
         } else {
             AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-            alertDialog.setMessage("Contact " + "\""+searchWord +"\""+ " not found in the dictionary");
+            alertDialog.setMessage("Contacts " + "\""+searchWord +"\""+ " not found in the dictionary");
             alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {

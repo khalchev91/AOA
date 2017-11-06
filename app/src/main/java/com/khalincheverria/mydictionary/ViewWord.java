@@ -23,10 +23,10 @@ public class ViewWord extends AppCompatActivity {
         Contact contact;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Bundle bundle=getIntent().getExtras();
-        contact =(Contact)bundle.getSerializable("Contact");
+        contact =(Contact)bundle.getSerializable("Contacts");
 
         actionBar.setTitle(contact.getWord());
-        wordText=(TextView)findViewById(R.id.word);
+        wordText=(TextView)findViewById(R.id.contact);
         partOfSpeech=(TextView)findViewById(R.id.partOfSpeech);
         definition=(TextView)findViewById(R.id.definition);
 

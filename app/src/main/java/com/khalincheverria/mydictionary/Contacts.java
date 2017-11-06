@@ -40,13 +40,13 @@ import java.util.ArrayList;
 
 
 
-@SuppressWarnings({"deprecation", "ConstantConditions"})
-public class Words extends AppCompatActivity
+    @SuppressWarnings({"deprecation", "ConstantConditions"})
+public class Contacts extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     public static LinkedList wordList= new LinkedList();
     public static BinaryTree binaryTree= new BinaryTree();
-    private Contact contact = new Contact();
+    private com.khalincheverria.mydictionary.Model.Contact contact = new com.khalincheverria.mydictionary.Model.Contact();
     private  Uri uri=null;
     private String line;
     private boolean isTree;
@@ -72,7 +72,7 @@ public long start;
             loadingDialog.dismiss();
             end=System.nanoTime();
             duration = (double)(end - start)/1000000000;
-            Toast.makeText(Words.this, String.format("That took: %.4f seconds",duration), Toast.LENGTH_SHORT).show();
+            Toast.makeText(Contacts.this, String.format("That took: %.4f seconds",duration), Toast.LENGTH_SHORT).show();
         }
     };
 
@@ -93,8 +93,8 @@ public long start;
             }
             final BufferedReader reader=new BufferedReader(new InputStreamReader(inputStream));
         /*
-        loadingDialog=new ProgressDialog(Words.this);
-        loadingDialog.setMessage("Loading Words");
+        loadingDialog=new ProgressDialog(Contacts.this);
+        loadingDialog.setMessage("Loading Contacts");
         loadingDialog.setIndeterminate(true);
         loadingDialog.setCancelable(false);
         loadingDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -137,9 +137,9 @@ public long start;
                                 contact.setPartOfSpeech(words[1]);
                                 contact.setDefinition(words[2]);
                                 if (isTree) {
-                                    binaryTree.insert(new Contact(contact));
+                                    binaryTree.insert(new Contacts(contact));
                                 } else {
-                                    wordList.insert(ne!w Contact(contact));
+                                    wordList.insert(ne!w Contacts(contact));
                                 }
                             }
                             count++;
@@ -164,18 +164,9 @@ myAsyncTask.execute();
         protected Void doInBackground(Void... params){
             int count=0;
             while (count<linesFromFile.size()){
-                 String[] words = linesFromFile.get(count).split("\t");
+                 String[] words = linesFromFile.get(count).split(",");
                 if (words.length == 3) {
-                    if (words[0].charAt(0) == '-') {
-                        char[] letters = words[0].toCharArray();
-                        letters[0] = ' ';
-                        words[0] = String.valueOf(letters);
-                    }
-                    words[1] = words[1].replaceAll("[.]", "");
                     Log.d("WORD", words[0]);
-                    contact.setWord(words[0].trim().toLowerCase());
-                    contact.setPartOfSpeech(words[1]);
-                    contact.setDefinition(words[2]);
                     if (isTree) {
                         binaryTree.insert(new Contact(contact));
                     } else {
@@ -198,7 +189,7 @@ myAsyncTask.execute();
         protected void onPreExecute() {
             super.onPreExecute();
             running = true;
-            progressDialog = ProgressDialog.show(Words.this, "", "Loading Words");
+            progressDialog = ProgressDialog.show(Contacts.this, "", "Loading Contacts");
             progressDialog.setCanceledOnTouchOutside(false);
 
         }
@@ -234,23 +225,23 @@ myAsyncTask.execute();
         if(isTree) {
             DisplayWords displayWords = new DisplayWords();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            getSupportActionBar().setTitle("All Words");
+            getSupportActionBar().setTitle("All Contacts");
             Bundle bundle = new Bundle();
             bundle.putBoolean("Tree",true);
             displayWords.setArguments(bundle);
             fragmentTransaction.replace(R.id.frame_layout, displayWords, "DISPLAY_WORDS");
             fragmentTransaction.commit();
-            Snackbar.make(coordinatorLayout,"Number of words: "+binaryTree.count(),Snackbar.LENGTH_SHORT).setAction("Words",null).show();
+            Snackbar.make(coordinatorLayout,"Number of words: "+binaryTree.count(),Snackbar.LENGTH_SHORT).setAction("Contacts",null).show();
         }else {
             DisplayWords displayWords = new DisplayWords();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            getSupportActionBar().setTitle("All Words");
+            getSupportActionBar().setTitle("All Contacts");
             Bundle bundle = new Bundle();
             bundle.putBoolean("Tree",false);
             displayWords.setArguments(bundle);
             fragmentTransaction.replace(R.id.frame_layout, displayWords, "DISPLAY_WORDS");
             fragmentTransaction.commit();
-            Snackbar.make(coordinatorLayout,"Number of words: "+wordList.getSizeOfList(),Snackbar.LENGTH_SHORT).setAction("Words",null).show();
+            Snackbar.make(coordinatorLayout,"Number of words: "+wordList.getSizeOfList(),Snackbar.LENGTH_SHORT).setAction("Contacts",null).show();
         }
 
 
@@ -267,7 +258,7 @@ myAsyncTask.execute();
         addWord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(Words.this,AddWord.class);
+                Intent intent= new Intent(Contacts.this,AddWord.class);
                 startActivityForResult(intent,1);
             }
         });
@@ -282,19 +273,19 @@ myAsyncTask.execute();
         if(requestCode==1){
             if(resultCode== Activity.RESULT_OK){
 
-                contact = (Contact)data.getExtras().getSerializable("NewWord");
+                contact = (com.khalincheverria.mydictionary.Model.Contact)data.getExtras().getSerializable("NewWord");
                 if(isTree){
                     long start = System.nanoTime();
-                    binaryTree.insert(new Contact(contact));
+                    binaryTree.insert(new com.khalincheverria.mydictionary.Model.Contact(contact));
                     long end=System.nanoTime();
                     double duration = (double)(end - start)/1000000000;
-                    Toast.makeText(Words.this, String.format("That took: %.4f seconds",duration), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Contacts.this, String.format("That took: %.4f seconds",duration), Toast.LENGTH_SHORT).show();
                 }else {
                     long start = System.nanoTime();
-                    wordList.addWord(new Contact(contact));
+                    wordList.addWord(new com.khalincheverria.mydictionary.Model.Contact(contact));
                     long end=System.nanoTime();
                     double duration = (double)(end - start)/1000000000;
-                    Toast.makeText(Words.this, String.format("That took: %.4f seconds",duration), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Contacts.this, String.format("That took: %.4f seconds",duration), Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -373,7 +364,7 @@ myAsyncTask.execute();
             intent.putExtra("Tree",isTree);
             startActivityForResult(intent,3);
         }else if(id==R.id.sort_list){
-            loadingDialog=new ProgressDialog(Words.this);
+            loadingDialog=new ProgressDialog(Contacts.this);
             loadingDialog.setMessage("Sorting words...");
             loadingDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             loadingDialog.setIndeterminate(true);
@@ -406,7 +397,7 @@ myAsyncTask.execute();
                 DisplayWords displayWords = new DisplayWords();
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 if (actionBar != null) {
-                    actionBar.setTitle("All Words");
+                    actionBar.setTitle("All Contacts");
                 }
                 Bundle bundle = new Bundle();
                 bundle.putBoolean("Tree",true);
@@ -418,7 +409,7 @@ myAsyncTask.execute();
                 DisplayWords displayWords = new DisplayWords();
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 if (actionBar != null) {
-                    actionBar.setTitle("All Words");
+                    actionBar.setTitle("All Contacts");
                 }
                 Bundle bundle = new Bundle();
                 bundle.putBoolean("Tree",false);

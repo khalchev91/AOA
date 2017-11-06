@@ -68,9 +68,9 @@ public class ValidateSentence extends Fragment implements RecyclerViewClickListe
         isTree=bundle.getBoolean("Tree");
         RecyclerView recyclerView;
         if(isTree){
-            binaryTree=(BinaryTree)bundle.getSerializable("Words");
+            binaryTree=(BinaryTree)bundle.getSerializable("Contacts");
         }else {
-            wordList=(LinkedList)bundle.getSerializable("Words");
+            wordList=(LinkedList)bundle.getSerializable("Contacts");
         }
         Button button;
         numberOfWords=(TextView)view.findViewById(R.id.number_of_words);
