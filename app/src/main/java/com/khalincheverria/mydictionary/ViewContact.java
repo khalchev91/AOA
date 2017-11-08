@@ -29,13 +29,8 @@ public class ViewContact extends AppCompatActivity {
         NestedScrollView scrollView=findViewById(R.id.contact_scrollview);
         scrollView.setFillViewport(true);
 
-        /*assert getSupportActionBar() != null;
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(contact.getName().toString());*/
-
         contactName=findViewById(R.id.contact);
         address=findViewById(R.id.address);
-
 
         contactName.setText(contact.getName().toString());
         address.setText(contact.getAddress());

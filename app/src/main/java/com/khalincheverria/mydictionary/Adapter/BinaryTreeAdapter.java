@@ -57,6 +57,7 @@ private BinaryTree contactsTree;
     @Override
     public int getItemCount(){
         return contactsTree.count();
+
     }
 
 }

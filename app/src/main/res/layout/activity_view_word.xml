@@ -29,16 +29,6 @@
                 android:src="@drawable/avatar"
                 android:contentDescription="@string/contact_photo"/>
 
-
-            <!--<android.support.v7.widget.Toolbar
-                android:id="@+id/tab_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@android:color/transparent"
-                app:layout_collapseMode="pin"
-                android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                tools:ignore="UnusedAttribute" />-->
-
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
@@ -55,23 +45,21 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
                     <TextView
                         android:text="@string/name"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="20dp"
-                        android:textSize="20sp"/>
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="2dp"
-                        android:background="#ffffff"/>
+                        android:textSize="20sp"
+                        android:layout_weight="0.3"/>
                     <TextView
                     android:id="@+id/contact"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:textSize="20sp"
+                    android:layout_weight="0.7"
                     />
                 </LinearLayout>
 
