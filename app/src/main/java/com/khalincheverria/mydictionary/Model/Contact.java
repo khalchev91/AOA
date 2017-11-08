@@ -6,15 +6,15 @@ import java.io.Serializable;
     public class Contact implements Serializable {
 
         private Name name;
-        private Address address;
+        private String address;
 
-        public Contact(Name name,Address address){
+        public Contact(Name name,String address){
             setName(name);
             setAddress(address);
         }
 
         public Contact(){
-            this(new Name(),new Address());
+            this(new Name(),"");
         }
 
         public Contact(Contact contact){
@@ -29,17 +29,13 @@ import java.io.Serializable;
             this.name = name;
         }
 
-        public Address getAddress() {
+        public String getAddress() {
             return address;
         }
 
-        public void setAddress(Address address) {
+        public void setAddress(String address) {
             this.address = address;
         }
-
-
-
-
 
 
         public String toString(){

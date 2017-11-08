@@ -43,45 +43,36 @@ public class BinaryTree implements Serializable {
         return root==null;
 
     }
-
-
-
-    public void insert(Contact contact){
-        TreeNode treeNode=new TreeNode(contact);
+    public void insert(Contact contact) {
+        TreeNode treeNode = new TreeNode(contact);
         TreeNode node;
-        if(treeNode!=null){
-            if(root==null){
-                root=treeNode;
-            }else {
-                node=root;
-                while (true){
-                    if(treeNode.getContact().getWord().equalsIgnoreCase(node.getContact().getWord())) {
-                        contact.setDefinition(node.getContact().getDefinition()+"\n"+"\n"+ contact.getDefinition());
-                        if (!(contact.getPartOfSpeech().trim().compareToIgnoreCase(node.getContact().getPartOfSpeech().trim())==0)) {
-                            contact.setPartOfSpeech(contact.getPartOfSpeech()+"\t"+"\t"+node.getContact().getPartOfSpeech());
-                        }
-                        node.setContact(contact);
-                        return;
-                    }
-                    if(treeNode.getContact().getWord().compareToIgnoreCase(node.getContact().getWord())<0){
-                        if(node.getLeft()==null){
+
+        if (treeNode != null) {
+            if (root == null) {
+                root = treeNode;
+            } else {
+                node = root;
+                while (true) {
+                    if (treeNode.getContact().getName().getLastName().compareToIgnoreCase(node.getContact().getName().getLastName()) < 0) {
+                        if (node.getLeft() == null) {
                             node.setLeft(treeNode);
                             break;
-                        }else {
-                            node=node.getLeft();
+                        } else {
+                            node = node.getLeft();
                         }
-                    }else {
-                        if(node.getRight()==null){
+                    } else {
+                        if (node.getRight() == null) {
                             node.setRight(treeNode);
                             break;
-                        }else {
-                            node=node.getRight();
+                        } else {
+                            node = node.getRight();
                         }
                     }
                 }
             }
         }
     }
+
     public void display(){
         inOrder(root);
     }
@@ -128,42 +119,6 @@ public class BinaryTree implements Serializable {
     public Contact get(int index){
         inOrderTraverseTree(root,index,new Counter());
         return contact;
-    }
-
-public boolean contains(String key){
-
-  TreeNode node= root;
-    while (node!=null) {
-        if(key.trim().equalsIgnoreCase(node.getContact().getWord())){
-            return true;
-        }
-        if (key.compareToIgnoreCase(node.getContact().getWord()) < 0) {
-            node = node.getLeft();
-        } else {
-            node = node.getRight();
-        }
-    }
-    return false;
-}
-
-
-
-
-    public Contact searchWord(String word) {
-        TreeNode current = root;
-        count=0;
-        while (current != null) {
-            if (word.compareToIgnoreCase(current.getContact().getWord()) == 0) {
-                return current.getContact();
-            } else if (word.compareToIgnoreCase(current.getContact().getWord()) < 0) {
-                current = current.getLeft();
-            } else {
-                current = current.getRight();
-            }
-            count++;
-        }
-        setCount(-1);
-        return null;
     }
 
     public void clear(){

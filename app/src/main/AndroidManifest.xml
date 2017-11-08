@@ -10,32 +10,17 @@
         android:supportsRtl="true"
         android:largeHeap="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".Contacts"
             android:label="@string/app_name"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".TypeSentence"
-            android:parentActivityName=".Contacts"
-            android:label="Type Sentence"/>
+            android:theme="@style/AppTheme.NoActionBar">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN"/>
+            <category android:name="android.intent.category.LAUNCHER"/>
+        </intent-filter>
+        </activity>
         <activity
-            android:name=".Search"
-            android:parentActivityName=".Contacts"
-            android:label="Search"/>
-        <activity
-            android:name=".AddWord"
-            android:parentActivityName=".Contacts"
-            android:label="Add New Word"/>
-        <activity
-            android:name=".ViewWord"
+            android:name=".ViewContact"
             android:parentActivityName=".Contacts" />
     </application>
 

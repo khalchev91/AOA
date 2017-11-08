@@ -37,6 +37,7 @@ public class TreeNode implements Serializable {
 
     public Contact getContact() {
         return contact;
+
     }
 
     public void setContact(Contact contact) {

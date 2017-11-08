@@ -1,13 +1,16 @@
 package com.khalincheverria.mydictionary.Model;
 
-class Name {
+import java.io.Serializable;
 
-public String firstName;
-public String lastName;
+public class Name implements Serializable{
+
+private String firstName;
+private String lastName;
 
 public Name (){
 this("","");
 }
+
 public Name(String firstName, String lastName){
     setFirstName(firstName);
     setLastName(lastName);

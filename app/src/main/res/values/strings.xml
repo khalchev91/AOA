@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Dictionary!</string>
+    <string name="app_name">Contacts!</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -8,8 +8,6 @@
     <string name="action_search">Search</string>
     <string name="display_words">Display Words</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="binary_tree">Load Binary Tree</string>
     <string name="list_button">Load Linked List</string>
     <string name="hint_search">Word</string>
@@ -31,4 +29,7 @@
     <string name="time_taken">Time taken:</string>
     <string name="invalid_words">Words not in Dictionary</string>
     <string name="done_validate">End Validation</string>
+    <string name="contact_photo">Contact\'s Photo</string>
+    <string name="name">Name</string>
+    <string name="address">ADDRESS</string>
 </resources>

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
-    android:background="@drawable/dictionary1"
+    android:background="@drawable/directory"
     android:gravity="bottom"
     android:orientation="vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
@@ -12,13 +12,13 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        app:srcCompat="@drawable/wordss" />
+        app:srcCompat="@drawable/contacts_book" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dictionary"
-        android:textSize="30dp"
+        android:text="Contacts"
+        android:textSize="30sp"
         android:gravity="center"
         android:textColor="@android:color/white" />
 </LinearLayout>
