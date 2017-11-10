@@ -20,7 +20,9 @@ import android.view.ViewGroup;
 
 
 import com.khalincheverria.mydictionary.Adapter.BinaryTreeAdapter;
+import com.khalincheverria.mydictionary.Adapter.BinaryTreeSectionedAdapter;
 import com.khalincheverria.mydictionary.BinaryTree.BinaryTree;
+import com.zhukic.sectionedrecyclerview.SectionedRecyclerViewAdapter;
 
 
 import xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScroller;
@@ -66,10 +68,8 @@ public class DisplayWords extends Fragment {
 
         binaryTree= Contacts.getBinaryTree();
 
-            BinaryTreeAdapter binaryTreeAdapter=new BinaryTreeAdapter(binaryTree);
 
-            binaryTreeAdapter.notifyDataSetChanged();
-
+            BinaryTreeSectionedAdapter binaryTreeAdapter = new BinaryTreeSectionedAdapter(binaryTree);
             recyclerView.setAdapter(binaryTreeAdapter);
 
 Snackbar.make(coordinatorLayout,"Number of words: "+binaryTree.count(),Snackbar.LENGTH_SHORT).setAction("Contacts",null).show();
