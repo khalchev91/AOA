@@ -13,6 +13,12 @@ public class BinaryTree implements Serializable {
     boolean check=false;
    public int count;
 
+    private boolean atEnd;
+
+
+    public void setAtEnd(boolean atEnd) {
+        this.atEnd = atEnd;
+    }
 
     public void setCount(int count) {
         this.count = count;
@@ -41,8 +47,11 @@ public class BinaryTree implements Serializable {
 
     public boolean isEmpty(){
         return root==null;
-
     }
+
+
+
+
     public void insert(Contact contact) {
         TreeNode treeNode = new TreeNode(contact);
         TreeNode node;
@@ -73,9 +82,24 @@ public class BinaryTree implements Serializable {
         }
     }
 
+    public boolean atEnd(){
+        atEnd(root);
+        return atEnd;
+    }
+
+    private void atEnd(TreeNode node){
+        if(node!=null){
+            atEnd(node.getLeft());
+            atEnd = node.getContact()==null;
+            atEnd(node.getRight());
+        }
+    }
+
     public void display(){
         inOrder(root);
     }
+
+
 
     private void inOrder(TreeNode node){
         if(node!=null){

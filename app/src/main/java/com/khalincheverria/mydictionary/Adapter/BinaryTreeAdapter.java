@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.khalincheverria.mydictionary.BinaryTree.BinaryTree;
+import com.khalincheverria.mydictionary.DisplayWords;
 import com.khalincheverria.mydictionary.Model.Contact;
 import com.khalincheverria.mydictionary.R;
 import com.khalincheverria.mydictionary.ViewContact;
@@ -30,8 +31,8 @@ private BinaryTree contactsTree;
             imageView = view.findViewById(R.id.contact_icon);
         }
     }
-    public BinaryTreeAdapter(BinaryTree contactsTree){
-        this.contactsTree=contactsTree;
+    public BinaryTreeAdapter(){
+        this.contactsTree= DisplayWords.getBinaryTree();
     }
     @Override
     public BinaryTreeAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,int viewType){
@@ -44,6 +45,7 @@ private BinaryTree contactsTree;
         final Contact contact =contactsTree.get(position);
         viewHolder.textView.setText(contactsTree.get(position).getName().toString());
         final Context context;
+
         context=viewHolder.view.getContext();
         viewHolder.view.setOnClickListener(new View.OnClickListener() {
             @Override

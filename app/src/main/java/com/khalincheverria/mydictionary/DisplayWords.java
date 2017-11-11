@@ -20,9 +20,8 @@ import android.view.ViewGroup;
 
 
 import com.khalincheverria.mydictionary.Adapter.BinaryTreeAdapter;
-import com.khalincheverria.mydictionary.Adapter.BinaryTreeSectionedAdapter;
+import com.khalincheverria.mydictionary.Adapter.SectionedAdapter;
 import com.khalincheverria.mydictionary.BinaryTree.BinaryTree;
-import com.zhukic.sectionedrecyclerview.SectionedRecyclerViewAdapter;
 
 
 import xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScroller;
@@ -32,7 +31,7 @@ import xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScrol
  * A simple {@link Fragment} subclass.
  */
 @SuppressWarnings("deprecation")
-public class DisplayWords extends Fragment {
+public class DisplayWords extends Fragment{
 
     protected static BinaryTree binaryTree= new BinaryTree();
     protected RecyclerView recyclerView;
@@ -68,13 +67,18 @@ public class DisplayWords extends Fragment {
 
         binaryTree= Contacts.getBinaryTree();
 
+     BinaryTreeAdapter binaryTreeAdapter = new BinaryTreeAdapter();
+        recyclerView.setAdapter(binaryTreeAdapter);
 
-            BinaryTreeSectionedAdapter binaryTreeAdapter = new BinaryTreeSectionedAdapter(binaryTree);
-            recyclerView.setAdapter(binaryTreeAdapter);
-
+        /*binaryTreeAdapter.setContacts();*/
 Snackbar.make(coordinatorLayout,"Number of words: "+binaryTree.count(),Snackbar.LENGTH_SHORT).setAction("Contacts",null).show();
 
         return view;
+    }
+
+
+    public static BinaryTree getBinaryTree(){
+        return binaryTree;
     }
 
 }

@@ -126,12 +126,9 @@ myAsyncTask.execute();
                 if (contacts.length == 3) {
                     contact.setName(new Name(contacts[0],contacts[1]));
                     contact.setAddress(contacts[2]);
-                    Log.d("WORD", contacts[0]);
-                        binaryTree.insert(new Contact(contact));
+                    binaryTree.insert(new Contact(contact));
                 }
                 publishProgress(count);
-                Log.d("Count","Number: "+count+" out of "+linesFromFile.size());
-
                 count++;
             }
             return  null;
