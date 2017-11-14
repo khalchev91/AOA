@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.khalincheverria.mydictionary.BinaryTree.BinaryTree;
-import com.khalincheverria.mydictionary.DisplayWords;
+import com.khalincheverria.mydictionary.DepthFirstSearchTab;
 import com.khalincheverria.mydictionary.Model.Contact;
 import com.khalincheverria.mydictionary.R;
 import com.khalincheverria.mydictionary.ViewContact;
@@ -22,23 +22,20 @@ private BinaryTree contactsTree;
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView textView;
-        public ImageView imageView;
         public View view;
         public ViewHolder(View view){
             super(view);
             this.view= view;
             textView= view.findViewById(R.id.contacts_list);
-            imageView = view.findViewById(R.id.contact_icon);
         }
     }
     public BinaryTreeAdapter(){
-        this.contactsTree= DisplayWords.getBinaryTree();
+        this.contactsTree= DepthFirstSearchTab.getBinaryTree();
     }
     @Override
     public BinaryTreeAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,int viewType){
         View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.word_list,parent,false);
-        BinaryTreeAdapter.ViewHolder viewHolder=new BinaryTreeAdapter.ViewHolder(view);
-        return viewHolder;
+        return new ViewHolder(view);
     }
     @Override
     public void onBindViewHolder(BinaryTreeAdapter.ViewHolder viewHolder,int position){

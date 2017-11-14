@@ -16,7 +16,7 @@ public class ViewContact extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_word);
+        setContentView(R.layout.activity_view_contact);
         ActionBar actionBar= getSupportActionBar();
         TextView contactName;
         TextView address;
