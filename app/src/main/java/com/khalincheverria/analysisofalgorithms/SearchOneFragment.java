@@ -1,4 +1,4 @@
-package com.khalincheverria.mydictionary;
+package com.khalincheverria.analysisofalgorithms;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,10 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class SearchTwoFragment extends Fragment {
+public class SearchOneFragment extends Fragment {
 
-
-    public SearchTwoFragment() {
+    public SearchOneFragment() {
         // Required empty public constructor
     }
 
@@ -19,6 +18,6 @@ public class SearchTwoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_two, container, false);
+        return inflater.inflate(R.layout.fragment_search_one, container, false);
     }
 }

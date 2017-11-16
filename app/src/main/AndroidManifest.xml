@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.khalincheverria.mydictionary">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.khalincheverria.analysisofalgorithms">
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Contacts"
+            android:name="com.khalincheverria.analysisofalgorithms.Contacts"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar">
@@ -22,12 +23,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ViewContact"
-            android:parentActivityName=".Contacts" />
+            android:name="com.khalincheverria.analysisofalgorithms.ViewContact"
+            android:parentActivityName="com.khalincheverria.analysisofalgorithms.Contacts"
+            tools:targetApi="jelly_bean" />
         <activity
-            android:name=".SearchActivity"
+            android:name="com.khalincheverria.analysisofalgorithms.SearchActivity"
             android:label="@string/title_activity_search"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

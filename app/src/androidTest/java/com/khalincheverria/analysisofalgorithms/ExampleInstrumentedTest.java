@@ -1,4 +1,4 @@
-package com.khalincheverria.mydictionary;
+package com.khalincheverria.analysisofalgorithms;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

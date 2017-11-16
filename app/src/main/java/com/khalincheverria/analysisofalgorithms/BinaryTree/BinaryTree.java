@@ -1,7 +1,7 @@
-package com.khalincheverria.mydictionary.BinaryTree;
+package com.khalincheverria.analysisofalgorithms.BinaryTree;
 
 
-import com.khalincheverria.mydictionary.Model.Contact;
+import com.khalincheverria.analysisofalgorithms.Model.Contact;
 
 import java.io.Serializable;
 

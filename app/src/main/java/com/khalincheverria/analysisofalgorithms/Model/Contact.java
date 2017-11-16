@@ -1,4 +1,4 @@
-package com.khalincheverria.mydictionary.Model;
+package com.khalincheverria.analysisofalgorithms.Model;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package com.khalincheverria.mydictionary;
+package com.khalincheverria.analysisofalgorithms;
 
 
 import android.support.v4.widget.NestedScrollView;
@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.khalincheverria.mydictionary.Model.Contact;
+import com.khalincheverria.analysisofalgorithms.Model.Contact;
 
 
 public class ViewContact extends AppCompatActivity {

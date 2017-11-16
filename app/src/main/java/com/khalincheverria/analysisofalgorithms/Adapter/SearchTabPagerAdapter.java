@@ -1,13 +1,13 @@
-package com.khalincheverria.mydictionary.Adapter;
+package com.khalincheverria.analysisofalgorithms.Adapter;
 
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.khalincheverria.mydictionary.DepthFirstSearchTab;
-import com.khalincheverria.mydictionary.SearchOneFragment;
-import com.khalincheverria.mydictionary.SearchTwoFragment;
+import com.khalincheverria.analysisofalgorithms.DepthFirstSearchTab;
+import com.khalincheverria.analysisofalgorithms.SearchOneFragment;
+import com.khalincheverria.analysisofalgorithms.SearchTwoFragment;
 
 public class SearchTabPagerAdapter extends FragmentPagerAdapter {
     private int tabCount;
@@ -32,6 +32,7 @@ public class SearchTabPagerAdapter extends FragmentPagerAdapter {
             case 1: return new SearchOneFragment();
 
             case 2:return new SearchTwoFragment();
+
 
             default:return null;
         }

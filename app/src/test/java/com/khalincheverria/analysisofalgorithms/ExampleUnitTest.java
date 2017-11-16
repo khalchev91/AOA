@@ -1,4 +1,4 @@
-package com.khalincheverria.mydictionary;
+package com.khalincheverria.analysisofalgorithms;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.khalincheverria.mydictionary;
+package com.khalincheverria.analysisofalgorithms;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
@@ -12,10 +12,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.github.clans.fab.FloatingActionButton;
-import com.khalincheverria.mydictionary.Adapter.SearchTabPagerAdapter;
-import com.khalincheverria.mydictionary.BinaryTree.BinaryTree;
-import com.khalincheverria.mydictionary.Model.Contact;
-import com.khalincheverria.mydictionary.Model.Name;
+import com.khalincheverria.analysisofalgorithms.Adapter.SearchTabPagerAdapter;
+import com.khalincheverria.analysisofalgorithms.BinaryTree.BinaryTree;
+import com.khalincheverria.analysisofalgorithms.Model.Contact;
+import com.khalincheverria.analysisofalgorithms.Model.Name;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -88,6 +88,7 @@ public class Contacts extends AppCompatActivity {
             tabLayout.addTab(tabLayout.newTab().setText("Depth First Search"));
             tabLayout.addTab(tabLayout.newTab().setText("Search 2"));
             tabLayout.addTab(tabLayout.newTab().setText("Search 3"));
+            tabLayout.addTab(tabLayout.newTab().setText("Temporary tab"));
 
             tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
             final ViewPager pager = findViewById(R.id.viewPager);

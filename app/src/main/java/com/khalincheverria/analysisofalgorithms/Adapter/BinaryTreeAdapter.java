@@ -1,4 +1,4 @@
-package com.khalincheverria.mydictionary.Adapter;
+package com.khalincheverria.analysisofalgorithms.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,14 +6,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.khalincheverria.mydictionary.BinaryTree.BinaryTree;
-import com.khalincheverria.mydictionary.DepthFirstSearchTab;
-import com.khalincheverria.mydictionary.Model.Contact;
-import com.khalincheverria.mydictionary.R;
-import com.khalincheverria.mydictionary.ViewContact;
+import com.khalincheverria.analysisofalgorithms.BinaryTree.BinaryTree;
+import com.khalincheverria.analysisofalgorithms.DepthFirstSearchTab;
+import com.khalincheverria.analysisofalgorithms.Model.Contact;
+import com.khalincheverria.analysisofalgorithms.R;
+import com.khalincheverria.analysisofalgorithms.ViewContact;
 
 
 

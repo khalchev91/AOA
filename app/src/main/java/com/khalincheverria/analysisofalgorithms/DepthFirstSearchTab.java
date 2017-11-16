@@ -1,11 +1,10 @@
-package com.khalincheverria.mydictionary;
+package com.khalincheverria.analysisofalgorithms;
 
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 
 
@@ -18,8 +17,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import com.khalincheverria.mydictionary.Adapter.BinaryTreeAdapter;
-import com.khalincheverria.mydictionary.BinaryTree.BinaryTree;
+import com.khalincheverria.analysisofalgorithms.Adapter.BinaryTreeAdapter;
+import com.khalincheverria.analysisofalgorithms.BinaryTree.BinaryTree;
 
 
 import xyz.danoz.recyclerviewfastscroller.vertical.VerticalRecyclerViewFastScroller;
