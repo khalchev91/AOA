@@ -9,9 +9,13 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
-import com.github.clans.fab.FloatingActionButton;
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.khalincheverria.analysisofalgorithms.Adapter.SearchTabPagerAdapter;
 import com.khalincheverria.analysisofalgorithms.BinaryTree.BinaryTree;
 import com.khalincheverria.analysisofalgorithms.Model.Contact;
@@ -24,7 +28,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
-public class Contacts extends AppCompatActivity {
+public class Contacts extends AppCompatActivity{
 
     public static BinaryTree binaryTree= new BinaryTree();
     private Contact contact = new Contact();
@@ -82,17 +86,15 @@ public class Contacts extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton searchButton = findViewById(R.id.search);
 
            tabLayout  = findViewById(R.id.search_tabs);
             tabLayout.addTab(tabLayout.newTab().setText("Depth First Search"));
-            tabLayout.addTab(tabLayout.newTab().setText("Search 2"));
+            tabLayout.addTab(tabLayout.newTab().setText("Breadth First Search"));
             tabLayout.addTab(tabLayout.newTab().setText("Search 3"));
-            tabLayout.addTab(tabLayout.newTab().setText("Temporary tab"));
 
             tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
             final ViewPager pager = findViewById(R.id.viewPager);
-            SearchTabPagerAdapter adapter = new SearchTabPagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
+                    SearchTabPagerAdapter adapter = new SearchTabPagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
             pager.setAdapter(adapter);
             pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
             tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -112,16 +114,70 @@ public class Contacts extends AppCompatActivity {
                 }
             });
 
-            searchButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    startActivity(new Intent(Contacts.this,SearchActivity.class));
-                }
-            });
     }
 
+@Override
+public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.main,menu);
+        return true;
+}
+
+@Override
+public boolean onOptionsItemSelected(MenuItem item){
+
+    if(item.getItemId()==R.id.search_icon){
+
+        MaterialDialog dialog = new MaterialDialog.Builder(this)
+                .title("Search by name")
+                .customView(R.layout.search_view,false)
+                .positiveText("Search")
+                .negativeText("Cancel")
+                .build();
+
+        View view = dialog.getCustomView();
+        View positiveAction = dialog.getActionButton(DialogAction.POSITIVE);
 
 
+        final EditText firstName = view.findViewById(R.id.first_name);
+        final EditText lastName = view.findViewById(R.id.last_name);
+
+
+        if(firstName.getText() == null || lastName.getText()==null){
+            positiveAction.setEnabled(false);
+        }
+
+        positiveAction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name =firstName.getText().toString()+" "+ lastName.getText().toString();
+                Intent intent= new Intent(Contacts.this, SearchActivity.class);
+                intent.putExtra("Name",name);
+                switch (tabLayout.getSelectedTabPosition()){
+                    case 0:
+                        intent.putExtra("tab","dst");
+                        break;
+                    case 1:
+                        intent.putExtra("tab","bst");
+                        break;
+                    case 2:
+                        //TODO add next search algorithm
+                        break;
+                    default:
+                        intent.putExtra("tab","none");
+                        break;
+                }
+                startActivity(intent);
+
+            }
+        });
+
+        dialog.show();
+
+
+    }
+
+    return super.onOptionsItemSelected(item);
+}
     @Override
     public void onPause(){
         super.onPause();
@@ -141,7 +197,6 @@ public class Contacts extends AppCompatActivity {
     public static BinaryTree getBinaryTree() {
         return binaryTree;
     }
-
 
 
     @SuppressLint("StaticFieldLeak")

@@ -64,9 +64,10 @@ public class DepthFirstSearchTab extends Fragment {
         binaryTreeAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(binaryTreeAdapter);
 
-
-
         return view;
     }
+
+
+
 
 }

@@ -4,6 +4,7 @@ package com.khalincheverria.analysisofalgorithms.BinaryTree;
 import com.khalincheverria.analysisofalgorithms.Model.Contact;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 @SuppressWarnings("ConstantConditions")
@@ -12,6 +13,12 @@ public class BinaryTree implements Serializable {
     private Contact contact;
     boolean check=false;
    public int count;
+
+   private static ArrayList<Contact> contacts = new ArrayList<>();
+
+    public static ArrayList<Contact> getContacts() {
+        return contacts;
+    }
 
     private boolean atEnd;
 
@@ -95,10 +102,28 @@ public class BinaryTree implements Serializable {
         }
     }
 
+
+
     public void display(){
         inOrder(root);
     }
 
+
+    public void depthFirstSearch(String key){
+        contacts.clear();
+        search(root,key);
+    }
+    private void search(TreeNode node,String key){
+        if(node==null){
+            return;
+        }
+        search(node.getLeft(),key);
+        if(node.getContact().getName().toString().compareToIgnoreCase(key)==0){
+            contacts.add(new Contact(node.getContact()));
+        }
+        search(node.getRight(),key);
+
+    }
 
 
     private void inOrder(TreeNode node){
@@ -148,4 +173,10 @@ public class BinaryTree implements Serializable {
     public void clear(){
         root=null;
     }
+
+
+    public Contact search(String contactName){
+        return new Contact();
+    }
+
 }
