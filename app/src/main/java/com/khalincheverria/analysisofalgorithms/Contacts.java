@@ -127,7 +127,7 @@ public boolean onOptionsItemSelected(MenuItem item){
 
     if(item.getItemId()==R.id.search_icon){
 
-        MaterialDialog dialog = new MaterialDialog.Builder(this)
+        final MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .title("Search by name")
                 .customView(R.layout.search_view,false)
                 .positiveText("Search")
@@ -149,18 +149,21 @@ public boolean onOptionsItemSelected(MenuItem item){
         positiveAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name =firstName.getText().toString()+" "+ lastName.getText().toString();
+                String name =firstName.getText().toString().trim()+" "+ lastName.getText().toString().trim();
                 Intent intent= new Intent(Contacts.this, SearchActivity.class);
                 intent.putExtra("Name",name);
                 switch (tabLayout.getSelectedTabPosition()){
                     case 0:
                         intent.putExtra("tab","dst");
+                        dialog.dismiss();
                         break;
                     case 1:
                         intent.putExtra("tab","bst");
+                        dialog.dismiss();
                         break;
                     case 2:
                         //TODO add next search algorithm
+                        dialog.dismiss();
                         break;
                     default:
                         intent.putExtra("tab","none");

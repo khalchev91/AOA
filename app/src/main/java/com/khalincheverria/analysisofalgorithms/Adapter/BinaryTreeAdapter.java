@@ -31,6 +31,7 @@ private BinaryTree contactsTree;
     public BinaryTreeAdapter(){
         this.contactsTree= DepthFirstSearchTab.getBinaryTree();
     }
+
     @Override
     public BinaryTreeAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,int viewType){
         View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.word_list,parent,false);
