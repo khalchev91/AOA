@@ -1,6 +1,9 @@
 package com.khalincheverria.analysisofalgorithms;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.khalincheverria.analysisofalgorithms.Adapter.FoundContactAdapter;
 import com.khalincheverria.analysisofalgorithms.BinaryTree.BinaryTree;
 import com.khalincheverria.analysisofalgorithms.Model.Contact;
@@ -45,6 +50,27 @@ public class SearchActivity extends AppCompatActivity {
             case "dst":
                 binaryTree.depthFirstSearch(name);
                 ArrayList<Contact> contacts =  BinaryTree.getContacts();
+                if(contacts.size()==0){
+                    MaterialDialog dialog = new MaterialDialog.Builder(this)
+                            .title("Not found")
+                            .content("\""+name+"\" not found in the list")
+                            .positiveText("OK")
+                            .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                @Override
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                        dialog.dismiss();
+                                        SearchActivity.this.finish();
+                                }
+                            })
+                            .canceledOnTouchOutside(false)
+                            .cancelable(false)
+                            .build();
+
+
+
+                    dialog.show();
+
+                }
                 contactAdapter= new FoundContactAdapter(contacts);
                 recyclerView.setAdapter(contactAdapter);
                 contactAdapter.notifyDataSetChanged();

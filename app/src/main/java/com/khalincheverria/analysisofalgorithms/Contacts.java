@@ -9,6 +9,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -132,19 +134,79 @@ public boolean onOptionsItemSelected(MenuItem item){
                 .customView(R.layout.search_view,false)
                 .positiveText("Search")
                 .negativeText("Cancel")
+                .cancelable(false)
+                .canceledOnTouchOutside(false)
                 .build();
 
         View view = dialog.getCustomView();
-        View positiveAction = dialog.getActionButton(DialogAction.POSITIVE);
+        final View positiveAction = dialog.getActionButton(DialogAction.POSITIVE);
+        positiveAction.setEnabled(false);
 
 
         final EditText firstName = view.findViewById(R.id.first_name);
         final EditText lastName = view.findViewById(R.id.last_name);
 
+        lastName.setEnabled(false);
 
-        if(firstName.getText() == null || lastName.getText()==null){
-            positiveAction.setEnabled(false);
-        }
+        firstName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(charSequence.length()<=1) {
+                    lastName.setEnabled(false);
+                }else {
+                    lastName.setEnabled(true);
+                }
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(charSequence.length()>1){
+                    lastName.setEnabled(true);
+                }else {
+                    lastName.setEnabled(false);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(editable.toString().length()<=1){
+                    lastName.setEnabled(false);
+                }else{
+                    lastName.setEnabled(true);
+                }
+            }
+        });
+        lastName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(charSequence.length()<=1){
+                    positiveAction.setEnabled(false);
+
+                }else {
+                    positiveAction.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(charSequence.length()>1){
+                    positiveAction.setEnabled(true);
+                }else {
+                    positiveAction.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(editable.toString().length()<=1){
+                    positiveAction.setEnabled(false);
+                }else{
+                    positiveAction.setEnabled(true);
+                }
+            }
+        });
 
         positiveAction.setOnClickListener(new View.OnClickListener() {
             @Override
