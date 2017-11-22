@@ -5,6 +5,8 @@ import com.khalincheverria.analysisofalgorithms.Model.Contact;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 
 @SuppressWarnings("ConstantConditions")
@@ -51,13 +53,9 @@ public class BinaryTree implements Serializable {
         root=null;
     }
 
-
     public boolean isEmpty(){
         return root==null;
     }
-
-
-
 
     public void insert(Contact contact) {
         TreeNode treeNode = new TreeNode(contact);
@@ -102,17 +100,39 @@ public class BinaryTree implements Serializable {
         }
     }
 
-
-
     public void display(){
         inOrder(root);
     }
-
 
     public void depthFirstSearch(String key){
         contacts.clear();
         search(root,key);
     }
+
+    public void breadthFirstSearch(TreeNode node, String fname, String lname){
+
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        q.add(node);
+
+        while(!q.isEmpty()){
+            node = q.remove();
+
+            if(node.getContact().getName().getFirstName().equalsIgnoreCase(fname)){
+                if(node.getContact().getName().getLastName().equalsIgnoreCase(lname)){
+                    //The contact is found.
+                    break;
+                }
+            }
+
+            if(node.getLeft() != null){
+                q.add(node.getLeft());
+            }
+            if(node.getRight() != null){
+                q.add(node.getRight());
+            }
+        }
+    }
+
     private void search(TreeNode node,String key){
         if(node==null){
             return;
@@ -124,7 +144,6 @@ public class BinaryTree implements Serializable {
         search(node.getRight(),key);
 
     }
-
 
     private void inOrder(TreeNode node){
         if(node!=null){
@@ -149,6 +168,7 @@ public class BinaryTree implements Serializable {
             return l;
         }
     }
+
     public class Counter {
         int count = 0;
     }
@@ -165,6 +185,7 @@ public class BinaryTree implements Serializable {
         inOrderTraverseTree(root.getRight(),index,counter);
 
     }
+
     public Contact get(int index){
         inOrderTraverseTree(root,index,new Counter());
         return contact;
@@ -173,7 +194,6 @@ public class BinaryTree implements Serializable {
     public void clear(){
         root=null;
     }
-
 
     public Contact search(String contactName){
         return new Contact();

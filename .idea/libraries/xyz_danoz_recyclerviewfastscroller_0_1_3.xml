@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="xyz.danoz:recyclerviewfastscroller-0.1.3">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/recyclerviewfastscroller-0.1.3.aar/d0b8dcbf6159ad47d29f73767ebb0be0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/recyclerviewfastscroller-0.1.3.aar/d0b8dcbf6159ad47d29f73767ebb0be0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/recyclerviewfastscroller-0.1.3.aar/99bc97e2c5923ff819cf3c4694230610/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/recyclerviewfastscroller-0.1.3.aar/99bc97e2c5923ff819cf3c4694230610/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
