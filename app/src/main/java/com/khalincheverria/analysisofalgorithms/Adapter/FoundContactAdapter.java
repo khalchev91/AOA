@@ -49,7 +49,7 @@ public class FoundContactAdapter extends RecyclerView.Adapter<FoundContactAdapte
 
     @Override
     public int getItemCount() {
-        return contactArrayList==null ? 0 : contactArrayList.size();
+        return contactArrayList == null ? 0 : contactArrayList.size();
     }
 
 

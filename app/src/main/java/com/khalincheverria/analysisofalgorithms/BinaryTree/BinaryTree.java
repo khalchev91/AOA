@@ -53,9 +53,13 @@ public class BinaryTree implements Serializable {
         root=null;
     }
 
+
     public boolean isEmpty(){
         return root==null;
     }
+
+
+
 
     public void insert(Contact contact) {
         TreeNode treeNode = new TreeNode(contact);
@@ -100,16 +104,93 @@ public class BinaryTree implements Serializable {
         }
     }
 
+
+
     public void display(){
         inOrder(root);
     }
+
 
     public void depthFirstSearch(String key){
         contacts.clear();
         search(root,key);
     }
 
-    public void breadthFirstSearch(TreeNode node, String fname, String lname){
+    public void breadthFirstSearch(String name){
+        contacts.clear();
+        breadthFirstSearch(root,name);
+    }
+
+    private void knuthMorrisPratt(TreeNode root,String pattern){
+        if(root == null){
+            return;
+        }
+        knuthMorrisPratt(root.getLeft(),pattern);
+        if(prattSearch(pattern,root.getContact().getName().getLastName())){
+            contacts.add(root.getContact());
+        }
+        knuthMorrisPratt(root.getRight(),pattern);
+    }
+
+    private boolean prattSearch(String pattern, String name){
+        int patternLength = pattern.length();
+        int nameLength = name.length();
+        name = name.toLowerCase();
+        pattern = pattern.toLowerCase();
+        int longestPrefix[] = new int[patternLength];
+        int someNumber = 0;
+        computePrefixArray(pattern,longestPrefix);
+        int i = 0;
+        while (i<nameLength){
+            if(pattern.charAt(someNumber) == name.charAt(i)){
+                someNumber++;
+                i++;
+            }
+            if(someNumber == patternLength){
+                someNumber = longestPrefix[someNumber-1];
+                return true;
+            }else if(i < nameLength && (pattern.charAt(someNumber)!=name.charAt(i))){
+                if(someNumber!=0){
+                    someNumber = longestPrefix[someNumber-1];
+                }else {
+                    i=i+1;
+                }
+            }
+        }
+        return false;
+    }
+
+    private void computePrefixArray(String pattern,int longestPrefix[]) {
+        int length = 0;
+        int i = 1;
+
+        longestPrefix[0] = 0;
+
+        while (i<pattern.length()){
+            if(pattern.charAt(i) == pattern.charAt(length)){
+                length++;
+                longestPrefix[i] = length;
+                i++;
+            }else{
+                if(length!=0){
+                    length = longestPrefix[length-1];
+                }else {
+                    longestPrefix[i] = length;
+                    i++;
+                }
+            }
+        }
+    }
+
+    public ArrayList<Contact> knuthMorrisPratt(String pattern){
+        contacts.clear();
+        knuthMorrisPratt(root,pattern);
+        return contacts;
+    }
+
+
+
+    private void breadthFirstSearch(TreeNode node, String name){
 
         Queue<TreeNode> q = new LinkedList<TreeNode>();
         q.add(node);
@@ -117,11 +198,8 @@ public class BinaryTree implements Serializable {
         while(!q.isEmpty()){
             node = q.remove();
 
-            if(node.getContact().getName().getFirstName().equalsIgnoreCase(fname)){
-                if(node.getContact().getName().getLastName().equalsIgnoreCase(lname)){
-                    //The contact is found.
-                    break;
-                }
+            if(node.getContact().getName().toString().equalsIgnoreCase(name)){
+                contacts.add(node.getContact());
             }
 
             if(node.getLeft() != null){
@@ -144,6 +222,7 @@ public class BinaryTree implements Serializable {
         search(node.getRight(),key);
 
     }
+
 
     private void inOrder(TreeNode node){
         if(node!=null){
@@ -168,7 +247,6 @@ public class BinaryTree implements Serializable {
             return l;
         }
     }
-
     public class Counter {
         int count = 0;
     }
@@ -185,7 +263,6 @@ public class BinaryTree implements Serializable {
         inOrderTraverseTree(root.getRight(),index,counter);
 
     }
-
     public Contact get(int index){
         inOrderTraverseTree(root,index,new Counter());
         return contact;
@@ -194,6 +271,7 @@ public class BinaryTree implements Serializable {
     public void clear(){
         root=null;
     }
+
 
     public Contact search(String contactName){
         return new Contact();

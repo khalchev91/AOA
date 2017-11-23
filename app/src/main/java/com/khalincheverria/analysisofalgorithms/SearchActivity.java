@@ -29,7 +29,7 @@ public class SearchActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     FoundContactAdapter contactAdapter;
-
+    ArrayList<Contact> contacts = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +49,7 @@ public class SearchActivity extends AppCompatActivity {
         switch (tab){
             case "dst":
                 binaryTree.depthFirstSearch(name);
-                ArrayList<Contact> contacts =  BinaryTree.getContacts();
+                contacts =  BinaryTree.getContacts();
                 if(contacts.size()==0){
                     MaterialDialog dialog = new MaterialDialog.Builder(this)
                             .title("Not found")
@@ -74,6 +74,36 @@ public class SearchActivity extends AppCompatActivity {
                 contactAdapter= new FoundContactAdapter(contacts);
                 recyclerView.setAdapter(contactAdapter);
                 contactAdapter.notifyDataSetChanged();
+
+                break;
+            case "bst":
+                binaryTree.breadthFirstSearch(name);
+                contacts =  BinaryTree.getContacts();
+                if(contacts.size()==0){
+                    MaterialDialog dialog = new MaterialDialog.Builder(this)
+                            .title("Not found")
+                            .content("\""+name+"\" not found in the list")
+                            .positiveText("OK")
+                            .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                @Override
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                    dialog.dismiss();
+                                    SearchActivity.this.finish();
+                                }
+                            })
+                            .canceledOnTouchOutside(false)
+                            .cancelable(false)
+                            .build();
+
+
+
+                    dialog.show();
+
+                }
+                contactAdapter= new FoundContactAdapter(contacts);
+                recyclerView.setAdapter(contactAdapter);
+                contactAdapter.notifyDataSetChanged();
+
         }
 
     }
