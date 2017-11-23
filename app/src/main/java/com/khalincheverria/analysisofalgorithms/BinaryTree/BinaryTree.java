@@ -5,6 +5,8 @@ import com.khalincheverria.analysisofalgorithms.Model.Contact;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 
 @SuppressWarnings("ConstantConditions")
@@ -113,6 +115,102 @@ public class BinaryTree implements Serializable {
         contacts.clear();
         search(root,key);
     }
+
+    public void breadthFirstSearch(String name){
+        contacts.clear();
+        breadthFirstSearch(root,name);
+    }
+
+    private void knuthMorrisPratt(TreeNode root,String pattern){
+        if(root == null){
+            return;
+        }
+        knuthMorrisPratt(root.getLeft(),pattern);
+        if(prattSearch(pattern,root.getContact().getName().getLastName())){
+            contacts.add(root.getContact());
+        }
+        knuthMorrisPratt(root.getRight(),pattern);
+    }
+
+    private boolean prattSearch(String pattern, String name){
+        int patternLength = pattern.length();
+        int nameLength = name.length();
+        name = name.toLowerCase();
+        pattern = pattern.toLowerCase();
+        int longestPrefix[] = new int[patternLength];
+        int someNumber = 0;
+        computePrefixArray(pattern,longestPrefix);
+        int i = 0;
+        while (i<nameLength){
+            if(pattern.charAt(someNumber) == name.charAt(i)){
+                someNumber++;
+                i++;
+            }
+            if(someNumber == patternLength){
+                someNumber = longestPrefix[someNumber-1];
+                return true;
+            }else if(i < nameLength && (pattern.charAt(someNumber)!=name.charAt(i))){
+                if(someNumber!=0){
+                    someNumber = longestPrefix[someNumber-1];
+                }else {
+                    i=i+1;
+                }
+            }
+        }
+        return false;
+    }
+
+    private void computePrefixArray(String pattern,int longestPrefix[]) {
+        int length = 0;
+        int i = 1;
+
+        longestPrefix[0] = 0;
+
+        while (i<pattern.length()){
+            if(pattern.charAt(i) == pattern.charAt(length)){
+                length++;
+                longestPrefix[i] = length;
+                i++;
+            }else{
+                if(length!=0){
+                    length = longestPrefix[length-1];
+                }else {
+                    longestPrefix[i] = length;
+                    i++;
+                }
+            }
+        }
+    }
+
+    public ArrayList<Contact> knuthMorrisPratt(String pattern){
+        contacts.clear();
+        knuthMorrisPratt(root,pattern);
+        return contacts;
+    }
+
+
+
+    private void breadthFirstSearch(TreeNode node, String name){
+
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        q.add(node);
+
+        while(!q.isEmpty()){
+            node = q.remove();
+
+            if(node.getContact().getName().toString().equalsIgnoreCase(name)){
+                contacts.add(node.getContact());
+            }
+
+            if(node.getLeft() != null){
+                q.add(node.getLeft());
+            }
+            if(node.getRight() != null){
+                q.add(node.getRight());
+            }
+        }
+    }
+
     private void search(TreeNode node,String key){
         if(node==null){
             return;

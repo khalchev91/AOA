@@ -31,7 +31,18 @@ public class DepthFirstSearchTab extends Fragment {
     protected RecyclerView recyclerView;
     protected LinearLayoutManager linearLayoutManager;
 
-    private VerticalRecyclerViewFastScroller fastScroller;
+
+    public static void setBinaryTree() {
+        DepthFirstSearchTab.binaryTree = Contacts.binaryTree;
+    }
+
+    public static DepthFirstSearchTab NewInstance(){
+        DepthFirstSearchTab depthFirstSearch= new DepthFirstSearchTab();
+        DepthFirstSearchTab.setBinaryTree();
+        return depthFirstSearch;
+    }
+
+
 
 
     public DepthFirstSearchTab() {
@@ -48,17 +59,18 @@ public class DepthFirstSearchTab extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_display_words, container, false);
+
+        binaryTree = Contacts.binaryTree;
         recyclerView = view.findViewById(R.id.word_list);
         linearLayoutManager = new LinearLayoutManager(this.getContext());
-        fastScroller = view.findViewById(R.id.fast_scroller);
-        CoordinatorLayout coordinatorLayout = getActivity().findViewById(R.id.main_layout);
+
+
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), linearLayoutManager.getOrientation());
+
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.addItemDecoration(dividerItemDecoration);
-        fastScroller.setRecyclerView(recyclerView);
-        recyclerView.setOnScrollListener(fastScroller.getOnScrollListener());
 
-        binaryTree = Contacts.getBinaryTree();
+
 
         BinaryTreeAdapter binaryTreeAdapter = new BinaryTreeAdapter();
         binaryTreeAdapter.notifyDataSetChanged();
