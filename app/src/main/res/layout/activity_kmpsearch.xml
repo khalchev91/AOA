@@ -13,6 +13,15 @@
     android:textSize="20sp"
     android:layout_marginLeft="20dp"/>
 
+    <TextView
+        android:id="@+id/not_found"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/contact_not_found"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:visibility="gone"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/kmp_found_contacts"
         android:layout_width="match_parent"

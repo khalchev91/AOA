@@ -60,8 +60,8 @@ public class KMPSearch extends Fragment {
         recyclerView.addItemDecoration(dividerItemDecoration);
 
         BinaryTreeAdapter binaryTreeAdapter = new BinaryTreeAdapter();
-        binaryTreeAdapter.notifyDataSetChanged();
-        recyclerView.setAdapter(binaryTreeAdapter);
+
+        recyclerView.setAdapter(new BinaryTreeAdapter());
 
         return view;
     }
