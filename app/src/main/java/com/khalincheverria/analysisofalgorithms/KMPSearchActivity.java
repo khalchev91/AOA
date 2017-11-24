@@ -1,7 +1,7 @@
 package com.khalincheverria.analysisofalgorithms;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.khalincheverria.analysisofalgorithms.Adapter.FoundContactAdapter;
 import com.khalincheverria.analysisofalgorithms.BinaryTree.BinaryTree;
@@ -45,7 +46,12 @@ public class KMPSearchActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 contacts.clear();
                 if(charSequence.length()>=3){
-                   contacts =  binaryTree.knuthMorrisPratt(charSequence.toString());
+                    long start = System.nanoTime();
+                    contacts =  binaryTree.knuthMorrisPratt(charSequence.toString());
+                    long end=System.nanoTime();
+                    double duration = (double)(end - start)/1000000000;
+                    Toast.makeText(KMPSearchActivity.this, String.format("That took: %.5f seconds",duration), Toast.LENGTH_SHORT).show();
+
                    if(contacts.size()==0){
                     recyclerView.setVisibility(View.INVISIBLE);
                     notFound.setVisibility(View.VISIBLE);
@@ -62,7 +68,11 @@ public class KMPSearchActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
                 contacts.clear();
                 if(editable.toString().length()>=3){
+                    long start = System.nanoTime();
                     contacts =  binaryTree.knuthMorrisPratt(editable.toString());
+                    long end=System.nanoTime();
+                    double duration = (double)(end - start)/1000000000;
+                    Toast.makeText(KMPSearchActivity.this, String.format("That took: %.5f seconds",duration), Toast.LENGTH_SHORT).show();
                     if(contacts.size()==0){
                         recyclerView.setVisibility(View.INVISIBLE);
                         notFound.setVisibility(View.VISIBLE);

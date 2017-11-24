@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -30,6 +31,10 @@ public class SearchActivity extends AppCompatActivity {
     private LinearLayoutManager linearLayoutManager;
     FoundContactAdapter contactAdapter;
     ArrayList<Contact> contacts = new ArrayList<>();
+    private long start;
+    private long end;
+    private double duration;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +53,13 @@ public class SearchActivity extends AppCompatActivity {
         assert tab!=null;
         switch (tab){
             case "dst":
+                start = System.nanoTime();
                 binaryTree.depthFirstSearch(name);
                 contacts =  BinaryTree.getContacts();
+                end = System.nanoTime();
+                duration = (double)(end - start)/1000000000;
+                Toast.makeText(SearchActivity.this, String.format("That took: %.5f seconds", duration), Toast.LENGTH_SHORT).show();
+
                 if(contacts.size()==0){
                     MaterialDialog dialog = new MaterialDialog.Builder(this)
                             .title("Not found")
@@ -77,8 +87,12 @@ public class SearchActivity extends AppCompatActivity {
 
                 break;
             case "bst":
-                binaryTree.breadthFirstSearch(name);
+                long start = System.nanoTime();
+                binaryTree.depthFirstSearch(name);
                 contacts =  BinaryTree.getContacts();
+                long end=System.nanoTime();
+                double duration = (double)(end - start)/1000000000;
+                Toast.makeText(SearchActivity.this, String.format("That took: %.5f seconds",duration), Toast.LENGTH_SHORT).show();
                 if(contacts.size()==0){
                     MaterialDialog dialog = new MaterialDialog.Builder(this)
                             .title("Not found")
